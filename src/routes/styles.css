@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400&display=swap');
+
+:root {
+    --font: 'Martian Mono', monospace;
+    --font-size: 18px;
+    --line-height: 24px;
+    --shrinkage-width: 80px;
+    --margin: 20px;
+    --color-accent: blue;
+    --color-dark: #222;
+    --slider-max-width: 400px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    letter-spacing: -0.05em;
+    margin: 0;
+    padding: 0;
+    color: var(--color-dark);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#spacer {
+    height: 160px;
+}
+
+#number {
+    width: 100%;
+    color: var(--color-accent);
+    font-size: calc(var(--font-size) * 5);
+    font-weight: 300;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+#container {
+    padding: calc(var(--margin)/2);
+    align-items: stretch;
+    height: 100%;
+    display: flex;
+}
+
+#container>div {
+    padding: calc(var(--margin)/2);
+}
+
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+input {
+    font-family: 'Martian Mono', monospace;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    display: inline-block;
+    padding: 0;
+}
+
+.topbar {
+    border-top: 1px solid var(--color-dark);
+    padding-top: calc(var(--margin)*.5);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex {
+    flex: 1;
+}
+
+#measurement button {
+    padding: 0 0 0 16px;
+    opacity: .3;
+    background: none;
+    border: 0;
+    font-size: var(--font-size);
+    font-family: var(--font);
+    cursor: pointer;
+    transition: .2s all;
+}
+
+#measurement button.selected {
+    opacity: 1;
+    color: var(--color-accent);
+}
+
+.result {
+    /* color: blue; */
+    font-size: calc(var(--font-size) * 2);
+    font-weight: 300;
+    margin-top: calc(3 * var(--margin));
+}
+
+.result>div {
+    flex: 1;
+}
+
+.result>div:after {
+    color: var(--color-dark);
+    opacity: 0.3;
+    padding-left: 4px;
+    font-size: var(--font-size);
+    font-weight: 400;
+}
+
+.result>div:first-child:after {
+    content: "IN";
+}
+
+.result>div:last-child:after {
+    content: "CM";
+}
+
+input.shrinkage {
+    text-align: right;
+    width: var(--shrinkage-width);
+    font-size: var(--font-size);
+    color: blue;
+}
+
+.group {
+    display: block;
+    margin-bottom: calc(var(--margin)*1);
+    max-width: 800px;
+}
+
+.wrapper {
+    color: blue;
+}
+
+/* slider */
+.slidercontainer {
+    width: 60%;
+    max-width: var(--slider-max-width);
+    margin: 0 auto;
+    display: flex;
+}
+
+clay .slidercontainer {
+    display: none;
+}
+
+.slidercontainer[aria-current=true] {
+    display: flex;
+}
+
+.slidercontainer.small {
+    width: 30%;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    /* Full-width */
+    height: 1px;
+    /* Specified height */
+    background: var(--color-accent);
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    opacity: 0.7;
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    overflow: inherit;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    width: 16px;
+    /* Set a specific slider handle width */
+    height: 16px;
+    /* Slider handle height */
+    background: var(--color-accent);
+    /* Green background */
+    border-radius: 9px;
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+@media only screen and (max-width: 640px) {
+    :root {
+        --font-size: 18px;
+        --line-height: 34px;
+        --shrinkage-width: 64px;
+        --margin: 20px;
+        --slider-max-width: 280px;
+    }
+
+    #container {
+        flex-direction: column;
+    }
+
+    #spacer {
+        height: 40px;
+    }
+
+    #number {
+        margin-top: 60px;
+    }
+}
